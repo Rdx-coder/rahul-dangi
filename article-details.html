@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Article - Rahul Dangi</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Article Details</h1>
+  </header>
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Rahul Dangi</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="skills.html">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="articles.html">Articles</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    <h2 id="articleTitle" class="text-center"></h2>
+    <p id="articleContent"></p>
+  </div>
+  <footer>
+    <p>&copy; 2024 Rahul Dangi. All Rights Reserved.</p>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Simulated article content
+    const articles = {
+      "clean-code": {
+        title: "5 Tips for Writing Clean Code",
+        content: "Clean code is essential for maintainability. Follow these principles: 1. Use meaningful variable names, 2. Write small functions, 3. Avoid deep nesting, 4. Comment wisely, 5. Refactor regularly."
+      },
+      "seo-strategies": {
+        title: "SEO Strategies for Developers",
+        content: "SEO is crucial for web visibility. Focus on these strategies: 1. Use proper meta tags, 2. Optimize images, 3. Improve page speed, 4. Structure data, 5. Use semantic HTML."
+      },
+      "java-relevance": {
+        title: "Why Java is Still Relevant in 2024",
+        content: "Java's relevance stems from its platform independence, robust frameworks, and widespread adoption in enterprise development."
+      }
+    };
+
+    // Get query parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const articleKey = urlParams.get("article");
+
+    // Load article content
+    const article = articles[articleKey];
+    if (article) {
+      document.getElementById("articleTitle").textContent = article.title;
+      document.getElementById("articleContent").textContent = article.content;
+    } else {
+      document.getElementById("articleTitle").textContent = "Article Not Found";
+      document.getElementById("articleContent").textContent = "Sorry, the article you are looking for does not exist.";
+    }
+  </script>
+</body>
+</html>

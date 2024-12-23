@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - Rahul Dangi</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Contact Me</h1>
+  </header>
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Rahul Dangi</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="skills.html">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="articles.html">Articles</a></li>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    <h2 class="text-center">Get in Touch</h2>
+    <p class="text-center">Have a project in mind? Let’s connect and bring it to life!</p>
+    <form id="contactForm" class="row g-3">
+      <div class="col-md-6">
+        <input type="text" class="form-control" id="name" placeholder="Your Name" required>
+      </div>
+      <div class="col-md-6">
+        <input type="email" class="form-control" id="email" placeholder="Your Email" required>
+      </div>
+      <div class="col-12">
+        <textarea class="form-control" id="message" rows="4" placeholder="Your Message" required></textarea>
+      </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-success w-100">Send Message</button>
+      </div>
+    </form>
+  </div>
+  <footer>
+    <p>&copy; 2024 Rahul Dangi. All Rights Reserved.</p>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3.11.0/dist/email.min.js"></script>
+  <script>
+    // Initialize EmailJS
+    (function() {
+      emailjs.init("YQlDhA2xWYkiyAinr"); // Replace with your EmailJS Public Key
+    })();
+
+    // Handle form submission
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      // Get form values
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const message = document.getElementById("message").value;
+
+      // Prepare EmailJS parameters
+      const params = {
+        name: name,
+        email: email,
+        message: message,
+      };
+
+      // Send the email
+      emailjs.send("service_kfowfv5", "template_4uv4ki4", params)
+        .then(function(response) {
+          alert("Message sent successfully!");
+          document.getElementById("contactForm").reset();
+        })
+        .catch(function(error) {
+          alert("Failed to send the message. Please try again.");
+          console.error("Error:", error);
+        });
+    });
+  </script>
+</body>
+</html>
